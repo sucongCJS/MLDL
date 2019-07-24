@@ -108,6 +108,7 @@ class LinearRegression:
         return self
 
     def predict(self, X_predict):
+        """给定待预测数据集X_predict, 返回表示X_predict的结果向量"""
         assert self.interception_ is not None and self.coef_ is not None, \
             "must fit before predict"
         assert X_predict.shape[1] == len(self.coef_), \
@@ -117,6 +118,7 @@ class LinearRegression:
         return X_b.dot(self._theta)
 
     def score(self, X_test, y_test):
+        """确定模型准确度"""
         y_predict = self.predict(X_test)
         return r2_score(y_test, y_predict)
 
